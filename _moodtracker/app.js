@@ -51,11 +51,21 @@ function importData(event) {
         const transaction = db.transaction(STORE_NAME, 'readwrite');
         const store = transaction.objectStore(STORE_NAME);
 
-        jsonData.forEach(task => store.add(task));
+        // Step 1: Clear existing tasks
+        store.clear().onsuccess = function () {
+            console.log('Existing tasks cleared.');
 
-        transaction.oncomplete = function () {
-            alert('Import successful!');
-            loadTasks();
+            // Step 2: Add new tasks from the file
+            jsonData.forEach(task => store.add(task));
+
+            transaction.oncomplete = function () {
+                alert('Import successful! All old tasks were replaced.');
+                loadTasks();
+            };
+        };
+
+        transaction.onerror = function () {
+            console.error('Transaction error: Import failed.');
         };
     };
 
