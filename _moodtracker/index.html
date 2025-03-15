@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Advanced IndexedDB To-Do List</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('service-worker.js')
+                .then(() => console.log('Service Worker Registered'))
+                .catch((err) => console.log('Service Worker Registration Failed', err));
+        }
+
+    </script>
+</head>
+
+<body>
+    <h2>Advanced To-Do List</h2>
+    <input type="text" id="taskName" placeholder="Task Name">
+    <textarea id="taskDescription" placeholder="Task Description"></textarea>
+    <input type="date" id="taskDate">
+    <input type="color" id="taskColor" value="#ff0000">
+    <button onclick="addTask()">Add Task</button>
+    <ul id="taskList"></ul>
+
+    <!-- Modal and Overlay -->
+    <div class="modal-overlay" id="modalOverlay"></div>
+    <div class="modal" id="editModal">
+        <h3>Edit Task</h3>
+        <input type="text" id="editTaskName">
+        <textarea id="editTaskDescription"></textarea>
+        <input type="date" id="editTaskDate">
+        <input type="color" id="editTaskColor">
+        <button onclick="saveEdit()">Save</button>
+        <button onclick="closeModal()">Cancel</button>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        let deferredPrompt;
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            showManualInstallButton();
+        });
+
+        function showManualInstallButton() {
+            const button = document.createElement('button');
+            button.textContent = 'Install App';
+            button.style.position = 'fixed';
+            button.style.bottom = '20px';
+            button.style.right = '20px';
+            button.style.padding = '10px';
+            button.style.background = '#4CAF50';
+            button.style.color = '#fff';
+            button.style.border = 'none';
+            button.style.borderRadius = '5px';
+            button.style.cursor = 'pointer';
+
+            button.onclick = () => {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then((result) => {
+                    if (result.outcome === 'accepted') {
+                        console.log('User accepted the install prompt');
+                    } else {
+                        console.log('User dismissed the install prompt');
+                    }
+                    button.remove();
+                });
+            };
+
+            document.body.appendChild(button);
+        }
+
+    </script>
+</body>
+
+</html>
