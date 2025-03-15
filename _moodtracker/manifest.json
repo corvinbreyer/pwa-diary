@@ -1,0 +1,20 @@
+{
+  "name": "My Diary PWA",
+  "short_name": "Diary",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#df3079",
+  "icons": [
+    {
+      "src": "https://placehold.co/192x192/131317/eee",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "https://placehold.co/512x512/131317/eee",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}
