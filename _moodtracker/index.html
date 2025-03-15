@@ -3,7 +3,7 @@
 
 <head>
     <!-- ICONS: https://icons.getbootstrap.com/ -->
-    
+
     <title>Stimmungstagebuch</title>
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -20,9 +20,11 @@
 
 <body>
     <h2>Stimmungstagebuch</h2>
+    <button onclick="exportData()">Download as JSON</button><br>
+    <input type="file" id="importFile" accept=".json">
+    <button onclick="document.getElementById('importFile').click()">Import JSON</button><br><br>
     <input type="text" id="taskName" placeholder="Task Name"><br>
     <textarea id="taskDescription" placeholder="Task Description"></textarea><br>
-    <input type="date" id="taskDate"><br>
     <input type="color" id="taskColor" value="#ff0000"><br>
     <button onclick="addTask()">Add Task</button>
     <ul id="taskList"></ul>

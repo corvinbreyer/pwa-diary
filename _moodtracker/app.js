@@ -5,6 +5,8 @@ const STORE_NAME = 'tasks';
 let db;
 let currentEditId = null;
 
+/* --------- CUSTOM --------- */
+
 let sliderLabels = [
     'Schlecht',
     'Geht so',
@@ -17,6 +19,52 @@ let sliderLabels = [
 function update() {
     document.getElementById('sliderLabel').textContent = sliderLabels[Math.floor(document.getElementById('mySlider').value / 2)] + ' (' + document.getElementById('mySlider').value + ')';
 }
+
+function exportData() {
+    const transaction = db.transaction(STORE_NAME, 'readonly');
+    const store = transaction.objectStore(STORE_NAME);
+    const request = store.getAll();
+
+    request.onsuccess = function () {
+        const data = request.result;
+        const jsonString = JSON.stringify(data, null, 2);
+        const blob = new Blob([jsonString], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'tasks_backup.json';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    };
+}
+
+function importData(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = function (e) {
+        const jsonData = JSON.parse(e.target.result);
+        const transaction = db.transaction(STORE_NAME, 'readwrite');
+        const store = transaction.objectStore(STORE_NAME);
+
+        jsonData.forEach(task => store.add(task));
+
+        transaction.oncomplete = function () {
+            alert('Import successful!');
+            loadTasks();
+        };
+    };
+
+    reader.readAsText(file);
+}
+
+document.getElementById('importFile').addEventListener('change', importData);
+
+/* --------- DATABASE --------- */
 
 function openDB() {
     const request = indexedDB.open(DB_NAME, DB_VERSION);
