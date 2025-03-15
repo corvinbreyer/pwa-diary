@@ -2,8 +2,11 @@
 <html lang="en">
 
 <head>
-    <title>Advanced IndexedDB To-Do List</title>
+    <!-- ICONS: https://icons.getbootstrap.com/ -->
+    
+    <title>Stimmungstagebuch</title>
     <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="styles.css">
     <script>
         if ('serviceWorker' in navigator) {
@@ -16,11 +19,11 @@
 </head>
 
 <body>
-    <h2>Advanced To-Do List</h2>
-    <input type="text" id="taskName" placeholder="Task Name">
-    <textarea id="taskDescription" placeholder="Task Description"></textarea>
-    <input type="date" id="taskDate">
-    <input type="color" id="taskColor" value="#ff0000">
+    <h2>Stimmungstagebuch</h2>
+    <input type="text" id="taskName" placeholder="Task Name"><br>
+    <textarea id="taskDescription" placeholder="Task Description"></textarea><br>
+    <input type="date" id="taskDate"><br>
+    <input type="color" id="taskColor" value="#ff0000"><br>
     <button onclick="addTask()">Add Task</button>
     <ul id="taskList"></ul>
 

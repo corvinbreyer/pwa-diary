@@ -5,6 +5,19 @@ const STORE_NAME = 'tasks';
 let db;
 let currentEditId = null;
 
+let sliderLabels = [
+    'Schlecht',
+    'Geht so',
+    'Neutral',
+    'Ganz ok',
+    'Recht gut',
+    'Super',
+];
+
+function update() {
+    document.getElementById('sliderLabel').textContent = sliderLabels[Math.floor(document.getElementById('mySlider').value / 2)] + ' (' + document.getElementById('mySlider').value + ')';
+}
+
 function openDB() {
     const request = indexedDB.open(DB_NAME, DB_VERSION);
     request.onupgradeneeded = function (event) {
@@ -41,17 +54,23 @@ function displayTasks(tasks) {
         const li = document.createElement('li');
         li.className = 'todo-item';
         li.style.borderLeftColor = task.color;
+        
+        // Convert timestamp to a readable date
+        const date = new Date(task.timestamp);
+        const formattedDate = date.toLocaleString(); 
+
         li.innerHTML = `
-                    <div>
-                        <strong>${task.name}</strong><br>
-                        <small>${task.description}</small><br>
-                        <em>Due: ${task.date || 'N/A'}</em>
-                    </div>
-                    <div>
-                        <button onclick="openEditModal(${task.id}, '${task.name.replace(/'/g, "\\'")}', '${task.description.replace(/'/g, "\\'")}', '${task.date}', '${task.color}')">Edit</button>
-                        <button onclick="deleteTask(${task.id})">Delete</button>
-                    </div>
-                `;
+            <div>
+                <i class="bi bi-bookmark-fill" style="color: ${task.color}"></i>
+                <strong>${task.name}</strong><br>
+                <small>${task.description}</small><br>
+                <em>Added: ${formattedDate}</em>
+            </div>
+            <div>
+                <button onclick="openEditModal(${task.id}, '${task.name.replace(/'/g, "\\'")}', '${task.description.replace(/'/g, "\\'")}', '${task.color}')">Edit</button>
+                <button onclick="deleteTask(${task.id})">Delete</button>
+            </div>
+        `;
         taskList.appendChild(li);
     });
 }
@@ -59,17 +78,17 @@ function displayTasks(tasks) {
 function addTask() {
     const name = document.getElementById('taskName').value.trim();
     const description = document.getElementById('taskDescription').value.trim();
-    const date = document.getElementById('taskDate').value;
     const color = document.getElementById('taskColor').value;
 
     if (!name) return alert('Task name is required');
 
     const transaction = db.transaction(STORE_NAME, 'readwrite');
     const store = transaction.objectStore(STORE_NAME);
+    
     store.add({
         name,
         description,
-        date,
+        timestamp: Date.now(), // Save the creation time as a timestamp
         color
     });
 
@@ -82,15 +101,13 @@ function addTask() {
 function clearInputs() {
     document.getElementById('taskName').value = '';
     document.getElementById('taskDescription').value = '';
-    document.getElementById('taskDate').value = '';
     document.getElementById('taskColor').value = '#ff0000';
 }
 
-function openEditModal(id, name, description, date, color) {
+function openEditModal(id, name, description, color) {
     currentEditId = id;
     document.getElementById('editTaskName').value = name;
     document.getElementById('editTaskDescription').value = description;
-    document.getElementById('editTaskDate').value = date || '';
     document.getElementById('editTaskColor').value = color;
 
     document.getElementById('editModal').style.display = 'block';
@@ -106,7 +123,6 @@ function closeModal() {
 function saveEdit() {
     const newName = document.getElementById('editTaskName').value.trim();
     const newDescription = document.getElementById('editTaskDescription').value.trim();
-    const newDate = document.getElementById('editTaskDate').value;
     const newColor = document.getElementById('editTaskColor').value;
 
     if (!newName) return alert('Task name is required');
@@ -118,7 +134,6 @@ function saveEdit() {
         const task = event.target.result;
         task.name = newName;
         task.description = newDescription;
-        task.date = newDate;
         task.color = newColor;
 
         store.put(task).onsuccess = function () {
