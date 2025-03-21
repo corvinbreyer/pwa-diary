@@ -9,7 +9,7 @@ window.addEventListener('beforeinstallprompt', (e) => {
 function showManualInstallButton() {
     const button = document.createElement('button');
     button.textContent = 'Install App';
-    button.classList.add('installButton');
+    button.classList.add('installButton', 'info');
 
     button.onclick = () => {
         deferredPrompt.prompt();

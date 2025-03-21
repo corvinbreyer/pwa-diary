@@ -126,7 +126,7 @@ function displayTasks(tasks) {
             </div>
             <div>
                 <button onclick="openEditModal(${task.id}, '${task.name.replace(/'/g, "\\'")}', '${task.description.replace(/'/g, "\\'")}', '${task.color}')">Edit</button>
-                <button onclick="deleteTask(${task.id})">Delete</button>
+                <button class="warning" onclick="deleteTask(${task.id})">Delete</button>
             </div>
         `;
         taskList.appendChild(li);

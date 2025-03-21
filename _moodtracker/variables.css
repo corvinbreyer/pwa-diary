@@ -3,13 +3,14 @@
     /* ––– COLORS ––– */
     /* –––––––––––––– */
     
+    
     --background: #fff;
     --font: #131317;
     
     --white: #fff;
     --black: #000;
     
-    /*mat design colors from webtools*/
+    /*hint: mat design colors from webtools*/
     --gray-0: #f4f5f5; /*1*/
     --gray-1: #b7bdbf; /*4*/
     --gray-2: #697479; /*6*/
@@ -21,4 +22,24 @@
     --primary-2: #009688; /*5*/
     --primary-3: #00796b; /*7*/
     --primary-4: #004d40; /*9*/
+    
+    --warning-0: #ffcdd2; /*1*/
+    --warning-1: #e57373; /*3*/
+    --warning-2: #f44336; /*5*/
+    --warning-3: #d32f2f; /*7*/
+    --warning-4: #b71c1c; /*9*/
+    
+    --info-0: #b3e5fc; /*1*/
+    --info-1: #4fc3f7; /*3*/
+    --info-2: #03a9f4; /*5*/
+    --info-3: #0288d1; /*7*/
+    --info-4: #01579b; /*9*/
+    
+    
+    /* ––––––––––––– */
+    /* ––– OTHER ––– */
+    /* ––––––––––––– */
+    
+    
+    --button-border-radius: 1000px;
 }

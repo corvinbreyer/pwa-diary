@@ -34,15 +34,3 @@
 .modal textarea {
     width: calc(100% - 10px);
 }
-
-.installButton {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    padding: 10px;
-    background: var(--primary-3);
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}

@@ -36,7 +36,7 @@
         <button onclick="saveEdit()">Save</button>
         <button onclick="closeModal()">Cancel</button>
     </div>
-    
+
     <!-- Visual Aids -->
     <div class="visibleArea"></div>
     <div class="systemtop">
@@ -56,11 +56,17 @@
         <input type="text" id="taskName" placeholder="Task Name"><br>
         <textarea id="taskDescription" placeholder="Task Description"></textarea><br>
         <input type="color" id="taskColor" value="#ff0000"><br>
-        <button class="fill" onclick="addTask()">Add Task</button>
+        <button onclick="addTask()">Add Task</button>
         <hr>
         <canvas id="myChart"></canvas>
         <hr>
         <ul id="taskList"></ul>
+    </div>
+
+    <div id="tabs">
+        <a href="#"><i class="bi bi-folder2"></i><br><span>Label</span></a>
+        <a href="#"><i class="bi bi-folder2"></i><br><span>Label</span></a>
+        <a href="#"><i class="bi bi-folder2"></i><br><span>Label</span></a>
     </div>
 
     <script src="app.js"></script>

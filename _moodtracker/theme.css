@@ -51,7 +51,7 @@ hr {
 button {
     padding: 10px 20px;
     margin: 15px 0;
-    border-radius: 999px;
+    border-radius: var(--button-border-radius);
     border: none;
 }
 
@@ -61,18 +61,50 @@ button:hover {
 
 button.outline:hover,
 button.outline:active,
-button.fill {
+button {
     background: var(--primary-3);
     color: var(--white);
     border: 1px solid var(--primary-4);
 }
 
-button.fill:hover,
-button.fill:active,
+button:hover,
+button:active,
 button.outline {
     background: var(--primary-0);
     color: var(--black);
     border: 1px solid var(--primary-4);
+}
+
+button.outline.warning:hover,
+button.outline.warning:active,
+button.warning {
+    background: var(--warning-3);
+    color: var(--white);
+    border: 1px solid var(--warning-4);
+}
+
+button.warning:hover,
+button.warning:active,
+button.outline.warning {
+    background: var(--warning-0);
+    color: var(--black);
+    border: 1px solid var(--warning-4);
+}
+
+button.outline.info:hover,
+button.outline.info:active,
+button.info {
+    background: var(--info-3);
+    color: var(--white);
+    border: 1px solid var(--info-4);
+}
+
+button.info:hover,
+button.info:active,
+button.outline.info {
+    background: var(--info-0);
+    color: var(--black);
+    border: 1px solid var(--info-4);
 }
 
 .content {
@@ -85,7 +117,7 @@ button.outline {
     left: 0;
     width: 100%;
     box-sizing: border-box;
-    outline: 3px solid #0001;
+    outline: 2px solid #0001;
     border-radius: 28px;
     aspect-ratio: 9 / 16;
     user-select: none;
@@ -174,27 +206,40 @@ button.outline {
     transform: translate(-50%, -50%);
 }
 
-/*.tabs {
+.installButton {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px;
+    background: var(--primary-3);
+    border-radius: var(--button-border-radius);
+    cursor: pointer;
+}
+
+#tabs {
     padding: 5px;
     background: var(--primary-0);
     display: flex;
     justify-content: space-evenly;
     text-align: center;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    z-index: -1;
 }
 
-.tabs a {
+#tabs a {
     color: var(--primary-4);
     padding: 5px 10px;
 }
 
-.tabs i {
+#tabs i {
     display: inline-block;
     padding: 5px 10px 3px;
     font-size: 18px;
 }
 
-.tabs span {
+#tabs span {
     display: inline-block;
     font-size: 12px;
     margin-top: 5px;
-}*/
+}
