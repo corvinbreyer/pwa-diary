@@ -9,15 +9,7 @@ window.addEventListener('beforeinstallprompt', (e) => {
 function showManualInstallButton() {
     const button = document.createElement('button');
     button.textContent = 'Install App';
-    button.style.position = 'fixed';
-    button.style.bottom = '20px';
-    button.style.right = '20px';
-    button.style.padding = '10px';
-    button.style.background = '#4CAF50';
-    button.style.color = '#fff';
-    button.style.border = 'none';
-    button.style.borderRadius = '5px';
-    button.style.cursor = 'pointer';
+    button.classList.add('installButton');
 
     button.onclick = () => {
         deferredPrompt.prompt();
