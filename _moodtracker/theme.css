@@ -1,0 +1,191 @@
+:root {
+    --DEBUG-OUTLINES: 0;
+
+    --bg-white: #fff;
+    --font-black: #21191c;
+
+    --primary-100: #ecfdf7;
+    --primary-300: #70e5c1;
+    --primary-500: #13b68f;
+    --primary-700: #067661;
+    --primary-900: #074d41;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    border: var(--DEBUG-OUTLINES) solid red;
+}
+
+html {
+    font-family: sans-serif;
+    background: var(--bg-white);
+    color: var(--font-black);
+    font-size: 14px;
+}
+
+body {
+    max-width: 412px;
+    width: 100vw;
+    margin: 20px auto;
+    border: 3px solid #0003;
+    border-radius: 28px;
+}
+
+h1 {
+    margin-top: 20px;
+    font-weight: normal;
+}
+
+h2 {
+    margin: 13px 0;
+    font-weight: normal;
+}
+
+.content p {
+    margin-bottom: 1rem;
+}
+
+a {
+    text-decoration: none;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 15px 0;
+    border-radius: 999px;
+}
+
+button:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+button:active {
+    opacity: 0.9;
+}
+
+button.fill {
+    background: var(--primary-700);
+    color: var(--primary-100);
+}
+
+button.outline {
+    background: var(--primary-100);
+    color: var(--primary-900);
+    border: 1px solid var(--primary-900);
+}
+
+button.fill[disabled] {}
+
+.content {
+    margin: 15px;
+    border: var(--DEBUG-OUTLINES) solid yellow;
+}
+
+.systemtop {
+    display: flex;
+    justify-content: space-around;
+    font-weight: bold;
+    font-size: 10px;
+    padding: 3px;
+    background: #0001;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+}
+
+.topbar {
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    box-shadow: 0 0 10px #0002;
+}
+
+.topbar p {
+    margin: 0 !important;
+}
+
+.cardlist .item {
+    display: flex;
+    position: relative;
+    height: 73px;
+    padding: 10px;
+}
+
+.cardlist .item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    border-top: 1px solid #0005;
+}
+
+.cardlist .item:last-child::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    border-bottom: 1px solid #0005;
+}
+
+.cardlist .item .icon {
+    position: relative;
+    width: 20% !important;
+}
+
+.cardlist .item .itemcontent {
+    overflow: hidden;
+    width: 80% !important;
+    margin: 0 10px 0 0;
+    padding: 0;
+}
+
+.cardlist .item .icon + .itemcontent {
+    margin: 0 0 0 10px;
+}
+
+.cardlist .item .itemcontent h4 {
+    color: var(--primary-900);
+    margin-bottom: 3px;
+}
+
+.cardlist .item > * {
+    padding: 10px;
+}
+
+.cardlist .item .icon * {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.tabs {
+    padding: 5px;
+    background: var(--primary-100);
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+}
+
+.tabs a {
+    color: var(--primary-900);
+    padding: 5px 10px;
+}
+
+.tabs i {
+    display: inline-block;
+    padding: 5px 10px 3px;
+    font-size: 18px;
+}
+
+.tabs span {
+    display: inline-block;
+    font-size: 12px;
+    margin-top: 5px;
+}
