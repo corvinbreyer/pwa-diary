@@ -1,12 +1,24 @@
 :root {
-    --DEBUG-OUTLINES: 0;
-
-    --bg-white: #fff;
-    --font-black: #21191c;
-
-    --primary-100: #ecfdf7;
-    --primary-300: #70e5c1;
-    --primary-500: #13b68f;
-    --primary-700: #067661;
-    --primary-900: #074d41;
+    /* –––––––––––––– */
+    /* ––– COLORS ––– */
+    /* –––––––––––––– */
+    
+    --background: #fff;
+    --font: #131317;
+    
+    --white: #fff;
+    --black: #000;
+    
+    /*mat design colors from webtools*/
+    --gray-0: #f4f5f5; /*1*/
+    --gray-1: #b7bdbf; /*4*/
+    --gray-2: #697479; /*6*/
+    --gray-3: #3c4244; /*8*/
+    --gray-4: #1e2122; /*9*/
+    
+    --primary-0: #b2dfdb; /*1*/
+    --primary-1: #4db6ac; /*3*/
+    --primary-2: #009688; /*5*/
+    --primary-3: #00796b; /*7*/
+    --primary-4: #004d40; /*9*/
 }
