@@ -1,0 +1,12 @@
+:root {
+    --DEBUG-OUTLINES: 0;
+
+    --bg-white: #fff;
+    --font-black: #21191c;
+
+    --primary-100: #ecfdf7;
+    --primary-300: #70e5c1;
+    --primary-500: #13b68f;
+    --primary-700: #067661;
+    --primary-900: #074d41;
+}
