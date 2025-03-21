@@ -11,6 +11,7 @@ html {
 }
 
 body {
+    position: relative;
     max-width: 412px;
     width: 100vw;
     margin: 30px auto;
@@ -76,6 +77,17 @@ button.outline {
 
 .content {
     margin: 15px;
+}
+
+.visibleArea {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box;
+    outline: 3px solid #0001;
+    border-radius: 28px;
+    aspect-ratio: 9 / 16;
 }
 
 .systemtop {
