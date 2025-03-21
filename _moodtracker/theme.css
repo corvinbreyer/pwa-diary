@@ -88,6 +88,8 @@ button.outline {
     outline: 3px solid #0001;
     border-radius: 28px;
     aspect-ratio: 9 / 16;
+    user-select: none;
+    z-index: -1;
 }
 
 .systemtop {
