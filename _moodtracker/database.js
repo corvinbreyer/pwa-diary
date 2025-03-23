@@ -5,21 +5,6 @@ const STORE_NAME = 'tasks';
 let db;
 let currentEditId = null;
 
-/* --------- CUSTOM --------- */
-
-let sliderLabels = [
-    'Schlecht',
-    'Geht so',
-    'Neutral',
-    'Ganz ok',
-    'Recht gut',
-    'Super',
-];
-
-function update() {
-    document.getElementById('sliderLabel').textContent = sliderLabels[Math.floor(document.getElementById('mySlider').value / 2)] + ' (' + document.getElementById('mySlider').value + ')';
-}
-
 function exportData() {
     const transaction = db.transaction(STORE_NAME, 'readonly');
     const store = transaction.objectStore(STORE_NAME);
