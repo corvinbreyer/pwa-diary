@@ -23,11 +23,38 @@ document.addEventListener("DOMContentLoaded", function () {
             loadEventsFromDB().then((events) => {
                 calendar = new FullCalendar.Calendar(calendarEl, {
                     initialView: "dayGridMonth",
-                    selectable: false, // Disable selecting new dates
+                    locale: "de",
+                    firstDay: 1, // Start the week with Monday (Sunday is 0)
+                    selectable: true, // Disable selecting new dates
                     editable: false, // Prevent manual event changes
+                    headerToolbar: {
+                        left: "today,customPrev,customNext",
+                        center: "title",
+                        right: "dayGridMonth,timeGridWeek"
+                    },
+                    customButtons: {
+                        customPrev: {
+                            text: '', // You can replace this with your own HTML or icon
+                            click: function () {
+                                calendar.prev(); // Go to the previous view
+                            }
+                        },
+                        customNext: {
+                            text: '', // Replace this too
+                            click: function () {
+                                calendar.next(); // Go to the next view
+                            }
+                        }
+                    },
+                    buttonText: {
+                        dayGridMonth: "Monat", // Custom text for "Month"
+                        timeGridWeek: "Woche", // Custom text for "Week"
+                    },
                     events: events, // Load database events
                 });
                 calendar.render();
+                document.querySelector(".fc-customPrev-button").innerHTML = '<i class="bi bi-caret-left-fill"></i>';
+                document.querySelector(".fc-customNext-button").innerHTML = '<i class="bi bi-caret-right-fill"></i>';
                 calendarEl.dataset.initialized = "true"; // Mark as initialized
             });
         }
@@ -45,8 +72,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 // Convert tasks to FullCalendar event format
                 const events = tasks.map((task) => ({
-                    title: task.name,
-                    start: new Date(task.timestamp).toISOString().split("T")[0], // Ensure correct date format
+                    title: task.mood + ' ' + task.name,
+                    start: new Date(task.timestamp).toISOString()/*.split("T")[0]*/, // Ensure correct date format
                     color: task.color, // Use the task color
                     description: task.description, // Additional info (not displayed by default)
                 }));
