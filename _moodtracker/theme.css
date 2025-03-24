@@ -243,3 +243,26 @@ button.outline.info {
     font-size: 12px;
     margin-top: 5px;
 }
+
+.mood-selector {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.mood {
+    font-size: 24px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.mood:hover {
+    transform: scale(1.3);
+}
+
+.mood.selected {
+    border: 2px solid #ff0000;
+    border-radius: 50%;
+    padding: 5px;
+}

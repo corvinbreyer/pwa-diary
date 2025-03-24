@@ -91,37 +91,44 @@ function loadTasks() {
 }
 
 function displayTasks(tasks) {
-    const taskList = document.getElementById('taskList');
-    taskList.innerHTML = '';
+    const taskList = document.getElementById("taskList");
+    taskList.innerHTML = "";
+
     tasks.forEach(task => {
-        const li = document.createElement('li');
-        li.className = 'todo-item';
+        const li = document.createElement("li");
+        li.className = "todo-item";
         li.style.borderLeftColor = task.color;
-        
-        // Convert timestamp to a readable date
+
         const date = new Date(task.timestamp);
-        const formattedDate = date.toLocaleString(); 
+        const formattedDate = date.toLocaleString();
+
+        // Sicherstellen, dass Mood existiert
+        const mood = task.mood ? task.mood.replace(/'/g, "\\'") : "😐";
 
         li.innerHTML = `
             <div>
                 <i class="bi bi-bookmark-fill" style="color: ${task.color}"></i>
-                <strong>${task.name}</strong><br>
+                <strong>${mood} ${task.name}</strong><br>
                 <small>${task.description}</small><br>
                 <em>Added: ${formattedDate}</em>
             </div>
             <div>
-                <button onclick="openEditModal(${task.id}, '${task.name.replace(/'/g, "\\'")}', '${task.description.replace(/'/g, "\\'")}', '${task.color}')">Edit</button>
+                <button onclick="openEditModal(${task.id}, '${task.name.replace(/'/g, "\\'")}', '${task.description.replace(/'/g, "\\'")}', '${task.color}', '${task.mood}')">Edit</button>
                 <button class="warning" onclick="deleteTask(${task.id})">Delete</button>
             </div>
         `;
+
         taskList.appendChild(li);
     });
 }
+
+
 
 function addTask() {
     const name = document.getElementById('taskName').value.trim();
     const description = document.getElementById('taskDescription').value.trim();
     const color = document.getElementById('taskColor').value;
+    const mood = document.getElementById("taskMood").value || "😐"; 
 
     if (!name) return alert('Task name is required');
 
@@ -132,7 +139,8 @@ function addTask() {
         name,
         description,
         timestamp: Date.now(), // Save the creation time as a timestamp
-        color
+        color,
+        mood  
     });
 
     transaction.oncomplete = function () {
@@ -147,14 +155,24 @@ function clearInputs() {
     document.getElementById('taskColor').value = '#ff0000';
 }
 
-function openEditModal(id, name, description, color) {
+function openEditModal(id, name, description, color, mood) {
     currentEditId = id;
     document.getElementById('editTaskName').value = name;
     document.getElementById('editTaskDescription').value = description;
     document.getElementById('editTaskColor').value = color;
-
+    document.getElementById("editTaskMood").value = mood;
     document.getElementById('editModal').style.display = 'block';
     document.getElementById('modalOverlay').style.display = 'block';
+
+     // Vorausgewähltes Emoji hervorheben
+     document.querySelectorAll(".edit-mood").forEach(moodEl => {
+        moodEl.classList.remove("selected");
+        if (moodEl.dataset.mood === task.mood) {
+            moodEl.classList.add("selected");
+        }
+    });
+
+    document.getElementById("editModal").style.display = "block";
 }
 
 function closeModal() {
@@ -167,6 +185,7 @@ function saveEdit() {
     const newName = document.getElementById('editTaskName').value.trim();
     const newDescription = document.getElementById('editTaskDescription').value.trim();
     const newColor = document.getElementById('editTaskColor').value;
+    const newMood = document.getElementById('editTaskMood').value; // Der gewählte Mood
 
     if (!newName) return alert('Task name is required');
 
@@ -175,9 +194,12 @@ function saveEdit() {
 
     store.get(currentEditId).onsuccess = function (event) {
         const task = event.target.result;
+        if (!task) return alert("Task not found!");
+
         task.name = newName;
         task.description = newDescription;
         task.color = newColor;
+        task.mood = newMood || task.mood; // Falls kein neues Mood gesetzt wurde, behalte das alte
 
         store.put(task).onsuccess = function () {
             closeModal();
@@ -186,6 +208,7 @@ function saveEdit() {
     };
 }
 
+
 function deleteTask(id) {
     const transaction = db.transaction(STORE_NAME, 'readwrite');
     const store = transaction.objectStore(STORE_NAME);
@@ -193,5 +216,21 @@ function deleteTask(id) {
         loadTasks();
     };
 }
+
+document.querySelectorAll(".mood").forEach((emoji) => {
+    emoji.addEventListener("click", function () {
+        document.querySelectorAll(".mood").forEach(e => e.classList.remove("selected"));
+        this.classList.add("selected");
+        document.getElementById("taskMood").value = this.dataset.mood;
+    });
+});
+
+document.querySelectorAll(".edit-mood").forEach(moodEl => {
+    moodEl.addEventListener("click", function() {
+        document.querySelectorAll(".edit-mood").forEach(el => el.classList.remove("selected"));
+        this.classList.add("selected");
+        document.getElementById("editTaskMood").value = this.dataset.mood;
+    });
+});
 
 openDB();
