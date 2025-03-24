@@ -10,18 +10,18 @@
     --white: #fff;
     --black: #000;
     
-    /*hint: mat design colors from webtools*/
+    /*hint: mat design colors toolkit*/
     --gray-0: #f4f5f5; /*1*/
     --gray-1: #b7bdbf; /*4*/
     --gray-2: #697479; /*6*/
     --gray-3: #3c4244; /*8*/
     --gray-4: #1e2122; /*9*/
     
-    --primary-0: #b2dfdb; /*1*/
-    --primary-1: #4db6ac; /*3*/
-    --primary-2: #009688; /*5*/
-    --primary-3: #00796b; /*7*/
-    --primary-4: #004d40; /*9*/
+    --primary-0: #c5cae9; /*1*/
+    --primary-1: #7986cb; /*3*/
+    --primary-2: #3f51b5; /*5*/
+    --primary-3: #303f9f; /*7*/
+    --primary-4: #1a237e; /*9*/
     
     --warning-0: #ffcdd2; /*1*/
     --warning-1: #e57373; /*3*/
