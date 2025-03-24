@@ -13,7 +13,9 @@ function exportData() {
     request.onsuccess = function () {
         const data = request.result;
         const jsonString = JSON.stringify(data, null, 2);
-        const blob = new Blob([jsonString], { type: 'application/json' });
+        const blob = new Blob([jsonString], {
+            type: 'application/json'
+        });
         const url = URL.createObjectURL(blob);
 
         const a = document.createElement('a');
@@ -103,7 +105,7 @@ function displayTasks(tasks) {
         const formattedDate = date.toLocaleString();
 
         // Sicherstellen, dass Mood existiert
-        const mood = task.mood ? task.mood.replace(/'/g, "\\'") : "😐";
+        const mood = task.mood ? task.mood : "😐";
 
         li.innerHTML = `
             <div>
@@ -128,19 +130,19 @@ function addTask() {
     const name = document.getElementById('taskName').value.trim();
     const description = document.getElementById('taskDescription').value.trim();
     const color = document.getElementById('taskColor').value;
-    const mood = document.getElementById("taskMood").value || "😐"; 
+    const mood = document.getElementById("taskMood").value || "😐";
 
     if (!name) return alert('Task name is required');
 
     const transaction = db.transaction(STORE_NAME, 'readwrite');
     const store = transaction.objectStore(STORE_NAME);
-    
+
     store.add({
         name,
         description,
         timestamp: Date.now(), // Save the creation time as a timestamp
         color,
-        mood  
+        mood
     });
 
     transaction.oncomplete = function () {
@@ -164,10 +166,11 @@ function openEditModal(id, name, description, color, mood) {
     document.getElementById('editModal').style.display = 'block';
     document.getElementById('modalOverlay').style.display = 'block';
 
-     // Vorausgewähltes Emoji hervorheben
-     document.querySelectorAll(".edit-mood").forEach(moodEl => {
+    // Vorausgewähltes Emoji hervorheben
+    document.querySelectorAll(".mood").forEach(moodEl => {
+        console.log(moodEl.dataset.mood);
         moodEl.classList.remove("selected");
-        if (moodEl.dataset.mood === task.mood) {
+        if (moodEl.dataset.mood === mood) {
             moodEl.classList.add("selected");
         }
     });
@@ -185,13 +188,13 @@ function saveEdit() {
     const newName = document.getElementById('editTaskName').value.trim();
     const newDescription = document.getElementById('editTaskDescription').value.trim();
     const newColor = document.getElementById('editTaskColor').value;
-    const newMood = document.getElementById('editTaskMood').value; // Der gewählte Mood
+    const newMood =  document.querySelector("#editTaskMood .selected").dataset.mood ; // Der gewählte Mood
 
     if (!newName) return alert('Task name is required');
+    console.log(newMood);
 
     const transaction = db.transaction(STORE_NAME, 'readwrite');
     const store = transaction.objectStore(STORE_NAME);
-
     store.get(currentEditId).onsuccess = function (event) {
         const task = event.target.result;
         if (!task) return alert("Task not found!");
@@ -199,7 +202,7 @@ function saveEdit() {
         task.name = newName;
         task.description = newDescription;
         task.color = newColor;
-        task.mood = newMood || task.mood; // Falls kein neues Mood gesetzt wurde, behalte das alte
+        task.mood = newMood; // Falls kein neues Mood gesetzt wurde, behalte das alte
 
         store.put(task).onsuccess = function () {
             closeModal();
@@ -226,7 +229,7 @@ document.querySelectorAll(".mood").forEach((emoji) => {
 });
 
 document.querySelectorAll(".edit-mood").forEach(moodEl => {
-    moodEl.addEventListener("click", function() {
+    moodEl.addEventListener("click", function () {
         document.querySelectorAll(".edit-mood").forEach(el => el.classList.remove("selected"));
         this.classList.add("selected");
         document.getElementById("editTaskMood").value = this.dataset.mood;
