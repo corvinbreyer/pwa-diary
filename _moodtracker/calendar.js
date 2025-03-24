@@ -15,32 +15,52 @@ document.addEventListener("DOMContentLoaded", function () {
 			console.error("FullCalendar is not loaded yet.");
 			return;
 		}
+
 		const calendarEl = document.getElementById("calendar");
 
 		if (calendarEl && !calendarEl.dataset.initialized) {
 			// Prevent duplicate init
-			calendar = new FullCalendar.Calendar(calendarEl, {
-				initialView: "dayGridMonth",
-				selectable: true,
-				editable: true,
-				events: [],
-				dateClick: function (info) {
-					const title = prompt("Enter event title:");
-					if (title) {
-						calendar.addEvent({
-							title: title,
-							start: info.dateStr,
-							allDay: true,
-						});
-					}
-				},
+			loadEventsFromDB().then((events) => {
+				calendar = new FullCalendar.Calendar(calendarEl, {
+					initialView: "dayGridMonth",
+					selectable: false, // Disable selecting new dates
+					editable: false, // Prevent manual event changes
+					events: events, // Load database events
+				});
 			});
 
 			calendar.render();
 			calendarEl.dataset.initialized = "true"; // Mark as initialized
 		}
 	}
+	// Function to fetch tasks from IndexedDB and convert them to events
+	function loadEventsFromDB() {
+		return new Promise((resolve) => {
+			const transaction = db.transaction("tasks", "readonly");
+			const store = transaction.objectStore("tasks");
+			const request = store.getAll();
 
+			request.onsuccess = function () {
+				const tasks = request.result;
+				console.log("Loaded tasks from DB:", tasks);
+
+				// Convert tasks to FullCalendar event format
+				const events = tasks.map((task) => ({
+					title: task.name,
+					start: new Date(task.timestamp).toISOString().split("T")[0], // Ensure correct date format
+					color: task.color, // Use the task color
+					description: task.description, // Additional info (not displayed by default)
+				}));
+
+				resolve(events);
+			};
+
+			request.onerror = function () {
+				console.error("Error loading tasks from DB.");
+				resolve([]); // Return empty list on error
+			};
+		});
+	}
 	// Ensure function is available globally
 	window.initializeCalendar = initializeCalendar;
 });
