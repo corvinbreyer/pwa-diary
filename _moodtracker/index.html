@@ -12,6 +12,7 @@
 			rel="stylesheet"
 			href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
 		/>
+
 		<link rel="stylesheet" href="variables.css" />
 		<link rel="stylesheet" href="theme.css" />
 		<link rel="stylesheet" href="custom.css" />
@@ -27,7 +28,10 @@
 					);
 			}
 		</script>
+
+		<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js"></script>
 		<script src="navigation.js"></script>
+		<script src="calendar.js"></script>
 	</head>
 
 	<body>
@@ -72,6 +76,7 @@
 				<input type="color" id="taskColor" value="#ff0000" /><br />
 				<button onclick="addTask()">Add Task</button>
 				<hr />
+				<ul id="taskList"></ul>
 			</div>
 
 			<div class="overview">
@@ -80,7 +85,9 @@
 				<ul id="taskList"></ul>
 			</div>
 
-			<div class="calendar"></div>
+			<div class="calendar">
+				<div id="calendar"></div>
+			</div>
 		</div>
 
 		<div id="tabs">

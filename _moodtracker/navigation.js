@@ -26,9 +26,18 @@ document.addEventListener("DOMContentLoaded", function () {
 			// Update active tab style
 			tabs.forEach((t) => t.classList.remove("active"));
 			tab.classList.add("active");
+
+			//load calender if needed
+			if (sectionNames[index] === "calendar") {
+				sections["calendar"].style.display = "block"; // Ensure it's visible
+				setTimeout(() => {
+					if (!document.getElementById("calendar").dataset.initialized) {
+						initializeCalendar();
+					}
+				}, 100);
+			}
 		});
 	});
-
 	// Show "Home" section by default on load
 	showSection("home");
 });
