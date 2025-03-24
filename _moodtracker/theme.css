@@ -5,7 +5,7 @@
 
 html {
     font-family: sans-serif;
-    background: var(--background);
+    background: var(--gray-0);
     color: var(--font);
     font-size: 14px;
 }
@@ -14,9 +14,10 @@ body {
     position: relative;
     max-width: 412px;
     width: 100vw;
-    margin: 30px auto;
-    border: 3px solid #0003;
-    border-radius: 28px;
+    margin: 0 auto;
+    min-height: 100vh;
+    padding: 45px 0 90px;
+    background: var(--background);
 }
 
 h1 {
@@ -112,16 +113,16 @@ button.outline.info {
 }
 
 .visibleArea {
-    position: absolute;
+    position: fixed;
     top: 0;
-    left: 0;
-    width: 100%;
+    max-width: 412px;
+    width: 100vw;
     box-sizing: border-box;
-    outline: 2px solid #0001;
-    border-radius: 28px;
+    outline: 5px solid #0001;
     aspect-ratio: 9 / 16;
     user-select: none;
-    z-index: -1;
+    pointer-events: none;
+    z-index: 99;
 }
 
 .systemtop {
@@ -131,20 +132,6 @@ button.outline.info {
     font-size: 10px;
     padding: 3px;
     background: #0001;
-    border-top-left-radius: 25px;
-    border-top-right-radius: 25px;
-}
-
-.topbar {
-    text-align: center;
-    padding: 10px;
-    width: 100%;
-    box-sizing: border-box;
-    box-shadow: 0 0 10px #0002;
-}
-
-.topbar p {
-    margin: 0 !important;
 }
 
 .cardlist .item {
@@ -216,20 +203,50 @@ button.outline.info {
     cursor: pointer;
 }
 
+#topbar {
+    position: fixed;
+    text-align: center;
+    top: 0;
+    padding: 10px;
+    max-width: 412px;
+    width: 100vw;
+    z-index: 99;
+    background: var(--gray-0);
+    box-sizing: border-box;
+    box-shadow: 0 0 10px #0002;
+}
+
+#topbar p {
+    margin: 0 !important;
+}
+
 #tabs {
     padding: 5px;
     background: var(--primary-0);
     display: flex;
     justify-content: space-evenly;
     text-align: center;
-    border-bottom-left-radius: 25px;
-    border-bottom-right-radius: 25px;
-    z-index: -1;
+    z-index: 999;
+    position: fixed;
+    bottom: 0;
+    max-width: 412px;
+    width: 100vw;
+    box-sizing: border-box;
 }
 
 #tabs a {
     color: var(--primary-4);
-    padding: 5px 10px;
+    width: 30%;
+    height: 95%;
+    border-radius: 20px;
+    transition: 0.1s all;
+    padding: 3px 0;
+}
+
+#tabs a:hover {
+    color: var(--white);
+    background: var(--primary-2);
+    transition: 0.1s all;
 }
 
 #tabs i {
@@ -242,27 +259,4 @@ button.outline.info {
     display: inline-block;
     font-size: 12px;
     margin-top: 5px;
-}
-
-.mood-selector {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin: 10px 0;
-}
-
-.mood {
-    font-size: 24px;
-    cursor: pointer;
-    transition: transform 0.2s ease-in-out;
-}
-
-.mood:hover {
-    transform: scale(1.3);
-}
-
-.mood.selected {
-    border: 2px solid #ff0000;
-    border-radius: 50%;
-    padding: 5px;
 }

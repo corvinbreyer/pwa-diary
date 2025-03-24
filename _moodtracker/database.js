@@ -168,7 +168,6 @@ function openEditModal(id, name, description, color, mood) {
 
     // Vorausgewähltes Emoji hervorheben
     document.querySelectorAll(".mood").forEach(moodEl => {
-        console.log(moodEl.dataset.mood);
         moodEl.classList.remove("selected");
         if (moodEl.dataset.mood === mood) {
             moodEl.classList.add("selected");
@@ -191,7 +190,6 @@ function saveEdit() {
     const newMood =  document.querySelector("#editTaskMood .selected").dataset.mood ; // Der gewählte Mood
 
     if (!newName) return alert('Task name is required');
-    console.log(newMood);
 
     const transaction = db.transaction(STORE_NAME, 'readwrite');
     const store = transaction.objectStore(STORE_NAME);

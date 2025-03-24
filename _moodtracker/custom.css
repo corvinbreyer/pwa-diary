@@ -34,3 +34,27 @@
 .modal textarea {
     width: calc(100% - 10px);
 }
+
+.mood-selector {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.mood {
+    font-size: 24px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.mood:hover {
+    transform: scale(1.3);
+}
+
+.mood.selected {
+    border: 2px solid var(--primary-3);
+    background: var(--primary-0);
+    border-radius: 50%;
+    padding: 5px;
+}

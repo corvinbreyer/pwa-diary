@@ -34,14 +34,22 @@
 </head>
 
 <body>
-    <!-- Modal and Overlay -->
+
+    <!--------------------->
+    <!--------------------->
+    <!-- MODALS/OVERLAYS -->
+    <!--------------------->
+    <!--------------------->
+
+    <!-- Edit Entry Overlay -->
     <div class="modal-overlay" id="modalOverlay"></div>
     <div class="modal" id="editModal">
-        <h3>Edit Task</h3>
+        <h3>Eintrag bearbeiten</h3>
         <input type="text" id="editTaskName" />
         <textarea id="editTaskDescription"></textarea>
         <input type="color" id="editTaskColor" />
         <div id="editTaskMood" class="mood-selector">
+            <span class="mood" data-mood="😡">😡</span>
             <span class="mood" data-mood="😡">😡</span>
             <span class="mood" data-mood="😟">😟</span>
             <span class="mood" data-mood="😐">😐</span>
@@ -50,31 +58,30 @@
         </div>
         <input type="hidden" id="selectedMood" />
 
-        <button onclick="saveEdit()">Save</button>
-        <button onclick="closeModal()">Cancel</button>
+        <button onclick="saveEdit()">Speichern</button>
+        <button onclick="closeModal()">Abbrechen</button>
     </div>
 
     <!-- Visual Aids -->
     <div class="visibleArea"></div>
-    <div class="systemtop">
-        <p>9:30</p>
-        <p>58%</p>
-    </div>
 
     <!-- Main Content -->
-    <div class="topbar">
-        <p>Stimmungstagebuch</p>
+    <div id="topbar">
+        <p>Mein Stimmungstagebuch</p>
     </div>
 
     <div class="content">
+
+        <!----------------->
+        <!----------------->
+        <!-- SEITE: HOME -->
+        <!----------------->
+        <!----------------->
+
         <div class="addentry">
-            <h1>Übersicht deiner Einträge</h1>
-            <button class="outline" onclick="exportData()">Download as JSON</button><br>
-            <input type="file" id="importFile" accept=".json" />
-            <button class="outline" onclick="document.getElementById('importFile').click()">
-                Import JSON</button><br><br>
-            <input type="text" id="taskName" placeholder="Task Name" /><br>
-            <textarea id="taskDescription" placeholder="Task Description"></textarea><br>
+            <h2>Wie geht es dir?</h2>
+            <input type="text" id="taskName" placeholder="Titel" /><br>
+            <textarea id="taskDescription" placeholder="Beschreibung"></textarea><br>
             <input type="color" id="taskColor" value="#ff0000" /><br>
             <div class="mood-selector">
                 <span class="mood" data-mood="😡">😡</span>
@@ -84,26 +91,46 @@
                 <span class="mood" data-mood="😄">😄</span>
             </div>
             <input type="hidden" id="taskMood" />
-            <button onclick="addTask()">Add Task</button>
-            <hr>
-            <ul id="taskList"></ul>
+            <button onclick="addTask()">Hinzufügen</button>
         </div>
 
+        <!---------------------->
+        <!---------------------->
+        <!-- SEITE: ÜBERSICHT -->
+        <!---------------------->
+        <!---------------------->
+
         <div class="overview">
+            <h2>Übersicht deiner Einträge</h2>
+            <button class="outline" onclick="exportData()">Download JSON</button>
+            <button class="outline" onclick="document.getElementById('importFile').click()">Import JSON</button><br>
+            <input type="file" id="importFile" accept=".json" />
             <canvas id="myChart"></canvas>
             <hr>
             <ul id="taskList"></ul>
         </div>
+
+        <!--------------------->
+        <!--------------------->
+        <!-- SEITE: KALENDER -->
+        <!--------------------->
+        <!--------------------->
 
         <div class="calendar">
             <div id="calendar"></div>
         </div>
     </div>
 
+    <!----------------->
+    <!----------------->
+    <!-- MENU/REITER -->
+    <!----------------->
+    <!----------------->
+
     <div id="tabs">
-        <a href="#"><i class="bi bi-folder2"></i><br><span>Home</span></a>
-        <a href="#"><i class="bi bi-folder2"></i><br><span>Übersicht</span></a>
-        <a href="#"><i class="bi bi-folder2"></i><br><span>Kalender</span></a>
+        <a href="#"><i class="bi bi-house-heart-fill"></i><br><span>Home</span></a>
+        <a href="#"><i class="bi bi-list-ul"></i><br><span>Übersicht</span></a>
+        <a href="#"><i class="bi bi-calendar-week"></i><br><span>Kalender</span></a>
     </div>
 
     <script src="database.js"></script>
