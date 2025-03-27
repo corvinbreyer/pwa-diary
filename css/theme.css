@@ -253,7 +253,7 @@ textarea:focus {
 }
 
 #tabs {
-    padding: 5px;
+    padding: 7px;
     background: var(--primary-0);
     display: flex;
     justify-content: space-evenly;
@@ -264,20 +264,37 @@ textarea:focus {
     max-width: 412px;
     width: 100vw;
     box-sizing: border-box;
+    border-top-left-radius: var(--button-border-radius);
+    border-top-right-radius: var(--button-border-radius);
 }
 
 #tabs a {
     color: var(--primary-4);
-    width: 30%;
+    width: 50%;
     height: 95%;
     border-radius: var(--button-border-radius);
     transition: 0.1s all;
     padding: 3px 0;
 }
 
+#tabs a:first-of-type {
+    border-bottom-left-radius: 0;
+}
+
+#tabs a:last-of-type {
+    border-bottom-right-radius: 0;
+}
+
 #tabs a:hover {
     color: var(--background);
     background: var(--primary-2);
+    transition: 0.1s all;
+}
+
+#tabs a:active,
+#tabs a.active {
+    color: var(--background);
+    background: var(--primary-3);
     transition: 0.1s all;
 }
 
