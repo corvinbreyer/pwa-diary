@@ -1,5 +1,5 @@
 .todo-item {
-    border-left: 5px solid black;
+    border-left: 5px solid var(--font);
     padding-left: 10px;
     margin: 10px 0;
     border-radius: 10px;
@@ -24,7 +24,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: #fff;
+    background: var(--background);
     padding: 20px;
     z-index: 1000;
     width: 300px;
@@ -60,7 +60,7 @@
 }
 
 .calendar button {
-    color: var(--white) !important;
+    color: var(--background) !important;
     background: var(--primary-3) !important;
     border: 1px solid var(--primary-0) !important;
 }

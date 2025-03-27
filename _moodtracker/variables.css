@@ -1,45 +1,74 @@
-:root {
-    /* –––––––––––––– */
-    /* ––– COLORS ––– */
-    /* –––––––––––––– */
-    
-    
+/* –––––––––––––– */
+/* ––– COLORS ––– */
+/* –––––––––––––– */
+/* mat design colors toolkit 1,3,5,7,9 */
+
+body.light {
     --background: #fff;
     --font: #131317;
+
+    --gray-0: #f4f5f5;
+    --gray-1: #b7bdbf;
+    --gray-2: #697479;
+    --gray-3: #3c4244;
+    --gray-4: #1e2122;
+
+    --primary-0: #c5cae9;
+    --primary-1: #7986cb;
+    --primary-2: #3f51b5;
+    --primary-3: #303f9f;
+    --primary-4: #1a237e;
+
+    --warning-0: #ffcdd2;
+    --warning-1: #e57373;
+    --warning-2: #f44336;
+    --warning-3: #d32f2f;
+    --warning-4: #b71c1c;
+
+    --info-0: #b3e5fc;
+    --info-1: #4fc3f7;
+    --info-2: #03a9f4;
+    --info-3: #0288d1;
+    --info-4: #01579b;
     
-    --white: #fff;
-    --black: #000;
+    transition: all 0.2s;
+}
+
+body.dark {
+    --background: #131317;
+    --font: #fff;
+
+    --gray-0: #1e2122;
+    --gray-1: #3c4244;
+    --gray-2: #697479;
+    --gray-3: #b7bdbf;
+    --gray-4: #f4f5f5;
+
+    --primary-0: #1a237e;
+    --primary-1: #303f9f;
+    --primary-2: #3f51b5;
+    --primary-3: #7986cb;
+    --primary-4: #c5cae9;
+
+    --warning-0: #b71c1c;
+    --warning-1: #d32f2f;
+    --warning-2: #f44336;
+    --warning-3: #e57373;
+    --warning-4: #ffcdd2;
+
+    --info-0: #01579b;
+    --info-1: #0288d1;
+    --info-2: #03a9f4;
+    --info-3: #4fc3f7;
+    --info-4: #b3e5fc;
     
-    /*hint: mat design colors toolkit*/
-    --gray-0: #f4f5f5; /*1*/
-    --gray-1: #b7bdbf; /*4*/
-    --gray-2: #697479; /*6*/
-    --gray-3: #3c4244; /*8*/
-    --gray-4: #1e2122; /*9*/
-    
-    --primary-0: #c5cae9; /*1*/
-    --primary-1: #7986cb; /*3*/
-    --primary-2: #3f51b5; /*5*/
-    --primary-3: #303f9f; /*7*/
-    --primary-4: #1a237e; /*9*/
-    
-    --warning-0: #ffcdd2; /*1*/
-    --warning-1: #e57373; /*3*/
-    --warning-2: #f44336; /*5*/
-    --warning-3: #d32f2f; /*7*/
-    --warning-4: #b71c1c; /*9*/
-    
-    --info-0: #b3e5fc; /*1*/
-    --info-1: #4fc3f7; /*3*/
-    --info-2: #03a9f4; /*5*/
-    --info-3: #0288d1; /*7*/
-    --info-4: #01579b; /*9*/
-    
-    
-    /* ––––––––––––– */
-    /* ––– OTHER ––– */
-    /* ––––––––––––– */
-    
-    
+    transition: all 0.2s;
+}
+
+/* ––––––––––––– */
+/* ––– OTHER ––– */
+/* ––––––––––––– */
+
+:root {
     --button-border-radius: 1000px;
 }

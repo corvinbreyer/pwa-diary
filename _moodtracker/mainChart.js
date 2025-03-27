@@ -14,7 +14,7 @@ new Chart(ctx, {
         datasets: [{
             label: '# of Votes',
             data: myChart.values,
-            backgroundColor: cssVar('--primary-2') + '33',
+            backgroundColor: cssVar('--primary-2'),
             borderColor: cssVar('--primary-2'),
             borderWidth: 1
                 }]

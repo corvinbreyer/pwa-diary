@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		home: document.querySelector(".addentry"),
 		overview: document.querySelector(".overview"),
 		calendar: document.querySelector(".calendar"),
+		profile: document.querySelector(".profile"),
 	};
 
 	const tabs = document.querySelectorAll("#tabs a");
@@ -20,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			event.preventDefault(); // Prevent default link behavior
 
 			// Determine which section to show based on the tab index
-			const sectionNames = ["home", "overview", "calendar"];
+			const sectionNames = ["home", "overview", "calendar", "profile"];
 			showSection(sectionNames[index]);
 
 			// Update active tab style
