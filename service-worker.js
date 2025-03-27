@@ -2,10 +2,21 @@ const CACHE_NAME = 'todo-app-v1';
 const ASSETS_TO_CACHE = [
     '/',
     '/index.html',
-    '/styles.css',      // add your css file if you have one
-    '/app.js',          // your main JS
-    '/icons/icon-192x192.png',  // your icons if you listed them in the manifest
+    
+    '/css/_variables.css',
+    '/css/custom.css',
+    '/css/theme.css',
+    
+    '/js/calendar.js',
+    '/js/customization.js',
+    '/js/database.js',
+    '/js/installButton.js',
+    '/js/mainChart.js',
+    '/js/navigation.js',
+    
+    '/icons/icon-192x192.png',
     '/icons/icon-512x512.png',
+    
     '/manifest.json'
 ];
 
