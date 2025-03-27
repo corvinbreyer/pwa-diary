@@ -8,19 +8,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stimmungstagebuch</title>
 
-    <link rel="manifest" href="/pwa-diary/manifest.json">
+    <link rel="manifest" href="./manifest.json">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-    <link rel="stylesheet" href="/pwa-diary/css/variables.css">
-    <link rel="stylesheet" href="/pwa-diary/css/theme.css">
-    <link rel="stylesheet" href="/pwa-diary/css/custom.css">
+    <link rel="stylesheet" href="./css/variables.css">
+    <link rel="stylesheet" href="./css/theme.css">
+    <link rel="stylesheet" href="./css/custom.css">
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js"></script>
     <script>
         if ("serviceWorker" in navigator) {
             navigator.serviceWorker
-                .register("/pwa-diary/service-worker.js")
+                .register("./service-worker.js")
                 .then(() => console.log("Service Worker Registered"))
                 .catch((err) =>
                     console.log("Service Worker Registration Failed", err)
@@ -154,12 +154,12 @@
         <a href="#"><i class="bi bi-person-circle"></i><br><span>Profil</span></a>
     </div>
 
-    <script src="/pwa-diary/js/database.js"></script>
-    <script src="/pwa-diary/js/installButton.js"></script>
-    <script src="/pwa-diary/js/mainChart.js"></script>
-    <script src="/pwa-diary/js/navigation.js"></script>
-    <script src="/pwa-diary/js/calendar.js"></script>
-    <script src="/pwa-diary/js/customization.js"></script>
+    <script src="./js/database.js"></script>
+    <script src="./js/installButton.js"></script>
+    <script src="./js/mainChart.js"></script>
+    <script src="./js/navigation.js"></script>
+    <script src="./js/calendar.js"></script>
+    <script src="./js/customization.js"></script>
 </body>
 
 <!-- chart colors -->
