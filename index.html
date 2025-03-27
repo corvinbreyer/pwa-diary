@@ -105,8 +105,8 @@
 
             <!--Übersicht und Suche-->
             <h2>Einträge verwalten</h2>
-            <input type="search" id="searchInput" placeholder="Suche nach..">
-            <button onclick="searchTask()">Suche</button>
+            <input type="search" id="searchInput" onkeydown="searchTask()" placeholder="Suche nach..">
+            <!--<button onclick="searchTask()">Suche</button>-->
 
             <ul id="taskList"></ul>
         </div>
@@ -123,11 +123,11 @@
             <div id="calendar"></div>
         </div>
 
-        <!--------------------->
-        <!--------------------->
+        <!------------------->
+        <!------------------->
         <!-- SEITE: PROFIL -->
-        <!--------------------->
-        <!--------------------->
+        <!------------------->
+        <!------------------->
 
         <div class="profile">
             <h1>Profil</h1>
@@ -136,8 +136,7 @@
             <button id="themeToggle"></button>
             <h2>Import &amp; Export</h2>
             <button class="outline" onclick="exportData()">Download JSON</button>
-            <button class="outline" onclick="document.getElementById('importFile').click()">
-                Import JSON</button><br>
+            <button class="outline" onclick="document.getElementById('importFile').click()">Import JSON</button><br>
             <input type="file" id="importFile" accept=".json">
         </div>
     </div>
@@ -164,5 +163,7 @@
 </body>
 
 <!-- chart colors -->
+<!-- calendar icons/heading layout -->
+<!-- install button missing on hosted site? -->
 
 </html>

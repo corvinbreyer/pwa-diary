@@ -1,3 +1,8 @@
+::selection {
+    background: var(--font);
+    color: var(--background);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -110,6 +115,25 @@ button.outline.info {
     background: var(--info-0);
     color: var(--font);
     border: 1px solid var(--info-4);
+}
+
+input,
+textarea {
+    padding: 10px;
+    border-radius: var(--button-border-radius);
+    margin-bottom: 10px;
+    border: none;
+}
+
+input[type="color"] {
+    padding: 2px;
+    border-radius: 2px;
+}
+
+input:focus,
+textarea:focus {
+    outline: 2px solid var(--primary-2);
+    box-shadow: 0 0 15px var(--primary-1);
 }
 
 .content {
