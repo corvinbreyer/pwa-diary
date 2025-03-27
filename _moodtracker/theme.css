@@ -239,7 +239,7 @@ button.outline.info {
     color: var(--primary-4);
     width: 30%;
     height: 95%;
-    border-radius: 20px;
+    border-radius: var(--button-border-radius);
     transition: 0.1s all;
     padding: 3px 0;
 }

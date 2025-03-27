@@ -70,5 +70,5 @@ body.dark {
 /* ––––––––––––– */
 
 :root {
-    --button-border-radius: 1000px;
+    --button-border-radius: 16px;
 }
