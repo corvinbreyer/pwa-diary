@@ -1,162 +1,198 @@
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<!-- ICONS: https://icons.getbootstrap.com/ -->
 
-<head>
-    <!-- ICONS: https://icons.getbootstrap.com/ -->
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Stimmungstagebuch</title>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stimmungstagebuch</title>
+		<link rel="manifest" href="manifest.json" />
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+		/>
 
-    <link rel="manifest" href="manifest.json">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+		<link rel="stylesheet" href="variables.css" />
+		<link rel="stylesheet" href="theme.css" />
+		<link rel="stylesheet" href="custom.css" />
 
-    <link rel="stylesheet" href="variables.css">
-    <link rel="stylesheet" href="theme.css">
-    <link rel="stylesheet" href="custom.css">
+		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js"></script>
+		<script>
+			if ("serviceWorker" in navigator) {
+				navigator.serviceWorker
+					.register("service-worker.js")
+					.then(() => console.log("Service Worker Registered"))
+					.catch((err) =>
+						console.log("Service Worker Registration Failed", err)
+					);
+			}
+		</script>
+	</head>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js"></script>
-    <script>
-        if ("serviceWorker" in navigator) {
-            navigator.serviceWorker
-                .register("service-worker.js")
-                .then(() => console.log("Service Worker Registered"))
-                .catch((err) =>
-                    console.log("Service Worker Registration Failed", err)
-                );
-        }
+	<body>
+		<!--------------------->
+		<!--------------------->
+		<!-- MODALS/OVERLAYS -->
+		<!--------------------->
+		<!--------------------->
 
-    </script>
-</head>
+		<!-- Edit Entry Overlay -->
+		<div class="modal-overlay" id="modalOverlay"></div>
+		<div class="modal" id="editModal">
+			<h3>Eintrag bearbeiten</h3>
+			<input type="text" id="editTaskName" />
+			<textarea id="editTaskDescription"></textarea>
+			<input type="color" id="editTaskColor" />
+			<div id="editTaskMood" class="mood-selector">
+				<span class="moodButton"
+					><span class="mood" data-mood="😡">😡</span></span
+				>
+				<span class="moodButton"
+					><span class="mood" data-mood="😟">😟</span></span
+				>
+				<span class="moodButton"
+					><span class="mood" data-mood="😐">😐</span></span
+				>
+				<span class="moodButton"
+					><span class="mood" data-mood="🙂">🙂</span></span
+				>
+				<span class="moodButton"
+					><span class="mood" data-mood="😄">😄</span></span
+				>
+			</div>
+			<input type="hidden" id="selectedMood" />
 
-<body>
+			<button onclick="saveEdit()">Speichern</button>
+			<button onclick="closeModal()">Abbrechen</button>
+		</div>
 
-    <!--------------------->
-    <!--------------------->
-    <!-- MODALS/OVERLAYS -->
-    <!--------------------->
-    <!--------------------->
+		<!-- Visual Aids -->
+		<div class="visibleArea"></div>
 
-    <!-- Edit Entry Overlay -->
-    <div class="modal-overlay" id="modalOverlay"></div>
-    <div class="modal" id="editModal">
-        <h3>Eintrag bearbeiten</h3>
-        <input type="text" id="editTaskName">
-        <textarea id="editTaskDescription"></textarea>
-        <input type="color" id="editTaskColor">
-        <div id="editTaskMood" class="mood-selector">
-            <span class="moodButton"><span class="mood" data-mood="😡">😡</span></span>
-            <span class="moodButton"><span class="mood" data-mood="😟">😟</span></span>
-            <span class="moodButton"><span class="mood" data-mood="😐">😐</span></span>
-            <span class="moodButton"><span class="mood" data-mood="🙂">🙂</span></span>
-            <span class="moodButton"><span class="mood" data-mood="😄">😄</span></span>
-        </div>
-        <input type="hidden" id="selectedMood">
+		<!-- Main Content -->
+		<div id="topbar">
+			<p>Mein Stimmungstagebuch</p>
+		</div>
 
-        <button onclick="saveEdit()">Speichern</button>
-        <button onclick="closeModal()">Abbrechen</button>
-    </div>
+		<div class="content">
+			<!----------------->
+			<!----------------->
+			<!-- SEITE: HOME -->
+			<!----------------->
+			<!----------------->
 
-    <!-- Visual Aids -->
-    <div class="visibleArea"></div>
+			<div class="addentry">
+				<h1>Wie geht es dir gerade?</h1>
+				<div class="h1hr"></div>
+				<input type="text" id="taskName" placeholder="Titel" /><br />
+				<textarea id="taskDescription" placeholder="Beschreibung"></textarea
+				><br />
+				<input type="color" id="taskColor" value="#ff0000" /><br />
+				<div class="mood-selector">
+					<span class="moodButton"
+						><span class="mood" data-mood="😡">😡</span></span
+					>
+					<span class="moodButton"
+						><span class="mood" data-mood="😟">😟</span></span
+					>
+					<span class="moodButton"
+						><span class="mood" data-mood="😐">😐</span></span
+					>
+					<span class="moodButton"
+						><span class="mood" data-mood="🙂">🙂</span></span
+					>
+					<span class="moodButton"
+						><span class="mood" data-mood="😄">😄</span></span
+					>
+				</div>
+				<input type="hidden" id="taskMood" />
+				<button onclick="addTask()">Hinzufügen</button>
+			</div>
 
-    <!-- Main Content -->
-    <div id="topbar">
-        <p>Mein Stimmungstagebuch</p>
-    </div>
+			<!---------------------->
+			<!---------------------->
+			<!-- SEITE: ÜBERSICHT -->
+			<!---------------------->
+			<!---------------------->
 
-    <div class="content">
+			<div class="overview">
+				<!---Statistiken-->
+				<h1>Persönliche Übersicht</h1>
+				<div class="h1hr"></div>
+				<h2>Diagramm</h2>
+				<canvas id="myChart"></canvas>
 
-        <!----------------->
-        <!----------------->
-        <!-- SEITE: HOME -->
-        <!----------------->
-        <!----------------->
+				<!--Übersicht und Suche-->
+				<h2>Einträge verwalten</h2>
+				<input type="search" id="searchInput" placeholder="Suche nach.." />
+				<button onclick="searchTask()">Suche</button>
 
-        <div class="addentry">
-            <h1>Wie geht es dir gerade?</h1>
-            <div class="h1hr"></div>
-            <input type="text" id="taskName" placeholder="Titel"><br>
-            <textarea id="taskDescription" placeholder="Beschreibung"></textarea><br>
-            <input type="color" id="taskColor" value="#ff0000"><br>
-            <div class="mood-selector">
-                <span class="moodButton"><span class="mood" data-mood="😡">😡</span></span>
-                <span class="moodButton"><span class="mood" data-mood="😟">😟</span></span>
-                <span class="moodButton"><span class="mood" data-mood="😐">😐</span></span>
-                <span class="moodButton"><span class="mood" data-mood="🙂">🙂</span></span>
-                <span class="moodButton"><span class="mood" data-mood="😄">😄</span></span>
-            </div>
-            <input type="hidden" id="taskMood">
-            <button onclick="addTask()">Hinzufügen</button>
-        </div>
+				<ul id="taskList"></ul>
+			</div>
 
-        <!---------------------->
-        <!---------------------->
-        <!-- SEITE: ÜBERSICHT -->
-        <!---------------------->
-        <!---------------------->
+			<!--------------------->
+			<!--------------------->
+			<!-- SEITE: KALENDER -->
+			<!--------------------->
+			<!--------------------->
 
-        <div class="overview">
-            <h1>Persönliche Übersicht</h1>
-            <div class="h1hr"></div>
-            <h2>Diagramm</h2>
-            <canvas id="myChart"></canvas>
-            <h2>Einträge verwalten</h2>
-            <ul id="taskList"></ul>
-        </div>
+			<div class="calendar">
+				<h1>Kalenderübersicht</h1>
+				<div class="h1hr"></div>
+				<div id="calendar"></div>
+			</div>
 
-        <!--------------------->
-        <!--------------------->
-        <!-- SEITE: KALENDER -->
-        <!--------------------->
-        <!--------------------->
+			<!--------------------->
+			<!--------------------->
+			<!-- SEITE: PROFIL -->
+			<!--------------------->
+			<!--------------------->
 
-        <div class="calendar">
-            <h1>Kalenderübersicht</h1>
-            <div class="h1hr"></div>
-            <div id="calendar"></div>
-        </div>
+			<div class="profile">
+				<h1>Profil</h1>
+				<div class="h1hr"></div>
+				<h2>Farbschema</h2>
+				<button id="themeToggle"></button>
+				<h2>Import &amp; Export</h2>
+				<button class="outline" onclick="exportData()">Download JSON</button>
+				<button
+					class="outline"
+					onclick="document.getElementById('importFile').click()"
+				>
+					Import JSON</button
+				><br />
+				<input type="file" id="importFile" accept=".json" />
+			</div>
+		</div>
 
-        <!--------------------->
-        <!--------------------->
-        <!-- SEITE: PROFIL -->
-        <!--------------------->
-        <!--------------------->
+		<!----------------->
+		<!----------------->
+		<!-- MENU/REITER -->
+		<!----------------->
+		<!----------------->
 
-        <div class="profile">
-            <h1>Profil</h1>
-            <div class="h1hr"></div>
-            <h2>Farbschema</h2>
-            <button id="themeToggle"></button>
-            <h2>Import &amp; Export</h2>
-            <button class="outline" onclick="exportData()">Download JSON</button>
-            <button class="outline" onclick="document.getElementById('importFile').click()">Import JSON</button><br>
-            <input type="file" id="importFile" accept=".json">
-        </div>
-    </div>
+		<div id="tabs">
+			<a href="#"
+				><i class="bi bi-house-heart-fill"></i><br /><span>Home</span></a
+			>
+			<a href="#"><i class="bi bi-list-ul"></i><br /><span>Übersicht</span></a>
+			<a href="#"
+				><i class="bi bi-calendar-week"></i><br /><span>Kalender</span></a
+			>
+			<a href="#"
+				><i class="bi bi-person-circle"></i><br /><span>Profil</span></a
+			>
+		</div>
 
-    <!----------------->
-    <!----------------->
-    <!-- MENU/REITER -->
-    <!----------------->
-    <!----------------->
+		<script src="database.js"></script>
+		<script src="installButton.js"></script>
+		<script src="mainChart.js"></script>
+		<script src="navigation.js"></script>
+		<script src="calendar.js"></script>
+		<script src="customization.js"></script>
+	</body>
 
-    <div id="tabs">
-        <a href="#"><i class="bi bi-house-heart-fill"></i><br><span>Home</span></a>
-        <a href="#"><i class="bi bi-list-ul"></i><br><span>Übersicht</span></a>
-        <a href="#"><i class="bi bi-calendar-week"></i><br><span>Kalender</span></a>
-        <a href="#"><i class="bi bi-person-circle"></i><br><span>Profil</span></a>
-    </div>
-
-    <script src="database.js"></script>
-    <script src="installButton.js"></script>
-    <script src="mainChart.js"></script>
-    <script src="navigation.js"></script>
-    <script src="calendar.js"></script>
-    <script src="customization.js"></script>
-</body>
-
-<!-- chart colors -->
-
+	<!-- chart colors -->
 </html>
