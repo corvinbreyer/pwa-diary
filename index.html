@@ -155,11 +155,42 @@
     </div>
 
     <script src="js/database.js"></script>
+    <!--    <script src="js/installButton.js"></script>-->
     <script src="js/installButton.js"></script>
     <script src="js/mainChart.js"></script>
     <script src="js/navigation.js"></script>
     <script src="js/calendar.js"></script>
     <script src="js/customization.js"></script>
+    <!--<script>
+        let deferredPrompt;
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            showManualInstallButton();
+        });
+
+        function showManualInstallButton() {
+            const button = document.createElement('button');
+            button.textContent = 'Install App';
+            button.classList.add('installButton', 'info');
+
+            button.onclick = () => {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then((result) => {
+                    if (result.outcome === 'accepted') {
+                        console.log('User accepted the install prompt');
+                    } else {
+                        console.log('User dismissed the install prompt');
+                    }
+                    button.remove();
+                });
+            };
+
+            document.body.appendChild(button);
+        }
+
+    </script>-->
 </body>
 
 <!-- chart colors -->

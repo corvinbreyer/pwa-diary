@@ -1,4 +1,4 @@
-const CACHE_NAME = 'todo-app-v1';
+const CACHE_NAME = 'moodtracker';
 const ASSETS_TO_CACHE = [
     '/',
     '/index.html',
