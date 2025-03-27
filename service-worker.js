@@ -14,10 +14,8 @@ const ASSETS_TO_CACHE = [
     './js/mainChart.js',
     './js/navigation.js',
 
-    /*'./icons/icon-192x192.png',
-    './icons/icon-512x512.png',*/
-    'https://placehold.co/192x192/EEE/31343C',
-    'https://placehold.co/512x512/EEE/31343C',
+    './icons/icon-192x192.png',
+    './icons/icon-512x512.png',
 
     './manifest.json'
 ];
