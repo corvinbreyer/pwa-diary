@@ -1,8 +1,6 @@
 {
     "name": "My To-Do App",
     "short_name": "To-Do",
-    "start_url": "./",
-    "scope": "./",
     "icons": [
         {
             "src": "/icons/icon-192x192.png",
