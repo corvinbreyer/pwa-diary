@@ -3,8 +3,8 @@ const ASSETS_TO_CACHE = [
     '/',
     '/index.html',
     
-    '/css/_variables.css',
-    '/css/custom.css',
+    '/variables.css',
+    '/custom.css',
     '/css/theme.css',
     
     '/js/calendar.js',
