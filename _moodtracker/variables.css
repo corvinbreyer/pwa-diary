@@ -13,11 +13,11 @@ body.light {
     --gray-3: #3c4244;
     --gray-4: #1e2122;
 
-    --primary-0: #c5cae9;
-    --primary-1: #7986cb;
-    --primary-2: #3f51b5;
-    --primary-3: #303f9f;
-    --primary-4: #1a237e;
+    --primary-0: #f8bbd0;
+    --primary-1: #f06292;
+    --primary-2: #e91e63;
+    --primary-3: #c2185b;
+    --primary-4: #880e4f;
 
     --warning-0: #ffcdd2;
     --warning-1: #e57373;
@@ -44,11 +44,11 @@ body.dark {
     --gray-3: #b7bdbf;
     --gray-4: #f4f5f5;
 
-    --primary-0: #1a237e;
-    --primary-1: #303f9f;
-    --primary-2: #3f51b5;
-    --primary-3: #7986cb;
-    --primary-4: #c5cae9;
+    --primary-0: #880e4f;
+    --primary-1: #c2185b;
+    --primary-2: #e91e63;
+    --primary-3: #f06292;
+    --primary-4: #f8bbd0;
 
     --warning-0: #b71c1c;
     --warning-1: #d32f2f;

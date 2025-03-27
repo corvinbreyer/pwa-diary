@@ -75,7 +75,8 @@
         <!----------------->
 
         <div class="addentry">
-            <h2>Wie geht es dir gerade?</h2>
+            <h1>Wie geht es dir gerade?</h1>
+            <div class="h1hr"></div>
             <input type="text" id="taskName" placeholder="Titel"><br>
             <textarea id="taskDescription" placeholder="Beschreibung"></textarea><br>
             <input type="color" id="taskColor" value="#ff0000"><br>
@@ -97,12 +98,11 @@
         <!---------------------->
 
         <div class="overview">
-            <h2>Übersicht deiner Einträge</h2>
-            <button class="outline" onclick="exportData()">Download JSON</button>
-            <button class="outline" onclick="document.getElementById('importFile').click()">Import JSON</button><br>
-            <input type="file" id="importFile" accept=".json">
+            <h1>Persönliche Übersicht</h1>
+            <div class="h1hr"></div>
+            <h2>Diagramm</h2>
             <canvas id="myChart"></canvas>
-            <hr>
+            <h2>Einträge verwalten</h2>
             <ul id="taskList"></ul>
         </div>
 
@@ -113,6 +113,8 @@
         <!--------------------->
 
         <div class="calendar">
+            <h1>Kalenderübersicht</h1>
+            <div class="h1hr"></div>
             <div id="calendar"></div>
         </div>
 
@@ -124,8 +126,13 @@
 
         <div class="profile">
             <h1>Profil</h1>
+            <div class="h1hr"></div>
             <h2>Farbschema</h2>
-            <button id="themeToggle">🌞🌚</button>
+            <button id="themeToggle"></button>
+            <h2>Import &amp; Export</h2>
+            <button class="outline" onclick="exportData()">Download JSON</button>
+            <button class="outline" onclick="document.getElementById('importFile').click()">Import JSON</button><br>
+            <input type="file" id="importFile" accept=".json">
         </div>
     </div>
 
@@ -150,10 +157,6 @@
     <script src="customization.js"></script>
 </body>
 
-<!-- button bora -->
-<!-- headings -->
-<!-- tabs size -->
 <!-- chart colors -->
-<!--  dp block -->
 
 </html>
