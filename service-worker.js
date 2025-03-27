@@ -3,21 +3,21 @@ const ASSETS_TO_CACHE = [
     '/',
     '/index.html',
     
-    '/css/variables.css',
-    '/css/custom.css',
-    '/css/theme.css',
+    '/pwa-diary/css/variables.css',
+    '/pwa-diary/css/custom.css',
+    '/pwa-diary/css/theme.css',
     
-    '/js/calendar.js',
-    '/js/customization.js',
-    '/js/database.js',
-    '/js/installButton.js',
-    '/js/mainChart.js',
-    '/js/navigation.js',
+    '/pwa-diary/js/calendar.js',
+    '/pwa-diary/js/customization.js',
+    '/pwa-diary/js/database.js',
+    '/pwa-diary/js/installButton.js',
+    '/pwa-diary/js/mainChart.js',
+    '/pwa-diary/js/navigation.js',
     
-    '/icons/icon-192x192.png',
-    '/icons/icon-512x512.png',
+    '/pwa-diary/icons/icon-192x192.png',
+    '/pwa-diary/icons/icon-512x512.png',
     
-    '/manifest.json'
+    '/pwa-diary/manifest.json'
 ];
 
 // Install event - cache app shell
