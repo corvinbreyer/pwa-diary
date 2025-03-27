@@ -4,7 +4,7 @@ const ASSETS_TO_CACHE = [
     '/index.html',
     
     '/variables.css',
-    '/custom.css',
+    '/css/custom.css',
     '/css/theme.css',
     
     '/js/calendar.js',
