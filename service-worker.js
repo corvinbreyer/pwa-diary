@@ -35,7 +35,7 @@ self.addEventListener('install', function (event) {
         caches.open(CACHE_NAME)
         .then(function (cache) {
             console.log('Caching files...');
-            return cache.addAll(urlsToCache.map(url => new Request(url, {
+            return cache.addAll(ASSETS_TO_CACHE.map(url => new Request(url, {
                     cache: "reload"
                 })))
                 .catch(err => console.log('Cache error:', err));
