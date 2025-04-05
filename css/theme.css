@@ -153,6 +153,7 @@ textarea:focus {
     user-select: none;
     pointer-events: none;
     z-index: 99;
+    display: none;
 }
 
 .systemtop {
