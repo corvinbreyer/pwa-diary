@@ -127,9 +127,15 @@ textarea {
     box-sizing: border-box;
 }
 
+textarea {
+    height: 200px;
+    resize: none;
+}
+
 input[type="color"] {
-    padding: 2px;
-    border-radius: 2px;
+    padding: 1px;
+    height: 50px;
+    border-radius: 3px;
 }
 
 input:focus,
