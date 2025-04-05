@@ -8,7 +8,7 @@ window.addEventListener('beforeinstallprompt', (e) => {
 
 function showManualInstallButton() {
     const button = document.createElement('button');
-    button.textContent = 'Install App';
+    button.innerHTML = '<i class="bi bi-arrow-down-circle-fill"></i> Jetzt Installieren!';
     button.classList.add('installButton', 'info');
 
     button.onclick = () => {

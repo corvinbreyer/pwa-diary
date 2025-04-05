@@ -225,12 +225,21 @@ textarea:focus {
 
 .installButton {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
+    bottom: 70px;
+    transform: translateX(-50%);
+    left: 50%;
+    z-index: 999;
     padding: 10px;
-    background: var(--primary-3);
+    font-weight: bold;
+    border: 2px solid var(--primary-0) !important;
+    background: var(--primary-3) !important;
     border-radius: var(--button-border-radius);
     cursor: pointer;
+}
+
+.installButton:hover {
+    color: #000 !important;
+    background: var(--primary-4) !important;
 }
 
 #topbar {
@@ -274,16 +283,25 @@ textarea:focus {
     color: var(--primary-4);
     width: 50%;
     height: 95%;
+    border: 2px solid var(--primary-0);
     border-radius: var(--button-border-radius);
     transition: 0.1s all;
     padding: 3px 0;
 }
 
-#tabs a:first-of-type {
+#tabs a:nth-of-type(1) {
     border-bottom-left-radius: 0;
 }
 
-#tabs a:last-of-type {
+#tabs a:nth-of-type(2) {
+    border-top-left-radius: 0;
+}
+
+#tabs a:nth-of-type(3) {
+    border-top-right-radius: 0;
+}
+
+#tabs a:nth-of-type(4) {
     border-bottom-right-radius: 0;
 }
 
