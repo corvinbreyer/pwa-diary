@@ -29,8 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     editable: false, // Prevent manual event changes
                     headerToolbar: {
                         left: "today,customPrev,customNext",
-                        center: "title",
-                        right: "dayGridMonth,timeGridWeek",
+                        right: "dayGridMonth,timeGridWeek,timeGridDay",
                     },
                     customButtons: {
                         todayButton: {
@@ -54,16 +53,35 @@ document.addEventListener("DOMContentLoaded", function () {
                     },
                     buttonText: {
                         dayGridMonth: "Monat", // Custom text for "Month"
-                        timeGridWeek: "Woche", // Custom text for "Week"
+                        timeGridWeek: "Woche",
+                        timeGridDay: "Tag"
                     },
                     events: events, // Load database events
                 });
+
                 calendar.render();
+
                 document.querySelector('.fc-today-button').innerHTML = 'Heute';
                 document.querySelector(".fc-customPrev-button").innerHTML =
                     '<i class="bi bi-caret-left-fill"></i>';
                 document.querySelector(".fc-customNext-button").innerHTML =
                     '<i class="bi bi-caret-right-fill"></i>';
+
+                // Create title element dynamically
+                var titleEl = document.createElement('h2');
+                titleEl.id = 'calendar-title';
+                titleEl.innerText = calendar.view.title;
+
+                // Insert the title below the header toolbar
+                var toolbarEl = document.querySelector('.fc-header-toolbar');
+                toolbarEl.insertAdjacentElement('afterend', titleEl);
+
+                // Update title dynamically when view changes
+                calendar.on('datesSet', function () {
+                    document.querySelector('.fc-today-button').innerHTML = 'Heute';
+                    titleEl.innerText = calendar.view.title;
+                });
+
                 calendarEl.dataset.initialized = "true"; // Mark as initialized
             });
         }

@@ -19,6 +19,7 @@ body {
     max-width: 412px;
     position: relative;
     box-sizing: border-box;
+    padding-bottom: 80px;
 }
 
 h1 {
@@ -128,7 +129,7 @@ textarea {
 }
 
 textarea {
-    height: 200px;
+    height: 150px;
     resize: none;
 }
 
