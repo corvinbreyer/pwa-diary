@@ -1,4 +1,4 @@
-const DB_NAME = "AdvancedTodoDB";
+const DB_NAME = "MoodDB";
 const DB_VERSION = 1;
 const STORE_NAME = "tasks";
 
@@ -20,7 +20,7 @@ function exportData() {
 
 		const a = document.createElement("a");
 		a.href = url;
-		a.download = "tasks_backup.json";
+		a.download = "entries.json";
 		document.body.appendChild(a);
 		a.click();
 		document.body.removeChild(a);
