@@ -119,10 +119,12 @@ button.outline.info {
 
 input,
 textarea {
-    padding: 10px;
+    padding: 12px;
     border-radius: var(--button-border-radius);
     margin-bottom: 10px;
-    border: none;
+    border: 2px solid var(--primary-0);
+    width: 100%;
+    box-sizing: border-box;
 }
 
 input[type="color"] {
