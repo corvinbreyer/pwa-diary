@@ -112,7 +112,7 @@ function displayTasks(tasks) {
                 <i class="bi bi-bookmark-fill" style="color: ${task.color}"></i>
                 <strong>${mood} ${task.name}</strong><br>
                 <small>${task.description}</small><br>
-                <em>Added: ${formattedDate}</em>
+                <em style="opacity:0.7">Erstellt am ${formattedDate}</em>
             </div>
             <div>
                 <button onclick="openEditModal(${task.id}, '${task.name.replace(
@@ -120,10 +120,10 @@ function displayTasks(tasks) {
 			"\\'"
 		)}', '${task.description.replace(/'/g, "\\'")}', '${task.color}', '${
 			task.mood
-		}')">Edit</button>
+		}')"><i class="bi bi-vector-pen"></i> Bearbeiten</button>
                 <button class="warning" onclick="deleteTask(${
 									task.id
-								})">Delete</button>
+								})"><i class="bi bi-trash3"></i> Löschen</button>
             </div>
         `;
 

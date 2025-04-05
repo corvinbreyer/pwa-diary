@@ -64,6 +64,8 @@ button {
     margin: 15px 0;
     border-radius: var(--button-border-radius);
     border: none;
+    font-family: sans-serif;
+    font-size: 0.9rem;
 }
 
 button:hover {
@@ -120,6 +122,8 @@ button.outline.info {
 
 input,
 textarea {
+    font-family: sans-serif;
+    font-size: 1rem;
     padding: 12px;
     border-radius: var(--button-border-radius);
     margin-bottom: 10px;
