@@ -2,8 +2,6 @@
 <html lang="en">
 
 <head>
-    <!-- ICONS: https://icons.getbootstrap.com/ -->
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stimmungstagebuch</title>
@@ -33,9 +31,7 @@
 <body>
 
     <!--------------------->
-    <!--------------------->
     <!-- MODALS/OVERLAYS -->
-    <!--------------------->
     <!--------------------->
 
     <!-- Edit Entry Overlay -->
@@ -63,14 +59,13 @@
 
     <!-- Main Content -->
     <div id="topbar">
-        <p>Mein Stimmungstagebuch <!--<span style="font-size: 9px; opacity: 0.4">-5617</span>--></p>
+        <p>Mein Stimmungstagebuch
+        </p>
     </div>
 
     <div class="content">
         <!----------------->
-        <!----------------->
         <!-- SEITE: HOME -->
-        <!----------------->
         <!----------------->
 
         <div class="addentry">
@@ -91,9 +86,7 @@
         </div>
 
         <!---------------------->
-        <!---------------------->
         <!-- SEITE: ÜBERSICHT -->
-        <!---------------------->
         <!---------------------->
 
         <div class="overview">
@@ -105,16 +98,12 @@
 
             <!--Übersicht und Suche-->
             <h2>Einträge verwalten</h2>
-            <input type="search" id="searchInput" onkeydown="searchTask()" placeholder="Suche nach..">
-            <!--<button onclick="searchTask()">Suche</button>-->
-
+            <input type="search" id="searchInput" onkeydown="searchTask()" placeholder="Suche nach...">
             <ul id="taskList"></ul>
         </div>
 
         <!--------------------->
-        <!--------------------->
         <!-- SEITE: KALENDER -->
-        <!--------------------->
         <!--------------------->
 
         <div class="calendar">
@@ -124,9 +113,7 @@
         </div>
 
         <!------------------->
-        <!------------------->
         <!-- SEITE: PROFIL -->
-        <!------------------->
         <!------------------->
 
         <div class="profile">
@@ -142,9 +129,7 @@
     </div>
 
     <!----------------->
-    <!----------------->
     <!-- MENU/REITER -->
-    <!----------------->
     <!----------------->
 
     <div id="tabs">
@@ -155,46 +140,11 @@
     </div>
 
     <script src="js/database.js"></script>
-    <!--    <script src="js/installButton.js"></script>-->
     <script src="js/installButton.js"></script>
     <script src="js/mainChart.js"></script>
     <script src="js/navigation.js"></script>
     <script src="js/calendar.js"></script>
     <script src="js/customization.js"></script>
-    <!--<script>
-        let deferredPrompt;
-
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            deferredPrompt = e;
-            showManualInstallButton();
-        });
-
-        function showManualInstallButton() {
-            const button = document.createElement('button');
-            button.textContent = 'Install App';
-            button.classList.add('installButton', 'info');
-
-            button.onclick = () => {
-                deferredPrompt.prompt();
-                deferredPrompt.userChoice.then((result) => {
-                    if (result.outcome === 'accepted') {
-                        console.log('User accepted the install prompt');
-                    } else {
-                        console.log('User dismissed the install prompt');
-                    }
-                    button.remove();
-                });
-            };
-
-            document.body.appendChild(button);
-        }
-
-    </script>-->
 </body>
-
-<!-- chart colors -->
-<!-- calendar icons/heading layout -->
-<!-- install button missing on hosted site? -->
 
 </html>
