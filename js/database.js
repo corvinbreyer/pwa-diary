@@ -153,6 +153,7 @@ function addTask() {
 	transaction.oncomplete = function () {
 		clearInputs();
 		loadTasks();
+		alert("Eintrag erfolgreich hinzugefügt");
 	};
 }
 
@@ -213,6 +214,8 @@ function saveEdit() {
 		store.put(task).onsuccess = function () {
 			closeModal();
 			loadTasks();
+			alert("Eintrag erfolgreich bearbeitet");
+			console.log("Eintrag erfolgreich bearbeitet");
 		};
 	};
 }
@@ -253,6 +256,7 @@ function deleteTask(id) {
 	const store = transaction.objectStore(STORE_NAME);
 	store.delete(id).onsuccess = function () {
 		loadTasks();
+		alert("Eintrag erfolgreich gelöscht");
 	};
 }
 
