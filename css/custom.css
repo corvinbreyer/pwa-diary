@@ -110,3 +110,9 @@
     border-top-right-radius: var(--button-border-radius);
     border-bottom-right-radius: var(--button-border-radius);
 }
+
+.sm-icons {
+    height: 2.3rem;
+    filter: invert(52%) sepia(93%) saturate(615%) hue-rotate(143deg) brightness(92%) contrast(101%);
+    margin-right: 6px;
+}
