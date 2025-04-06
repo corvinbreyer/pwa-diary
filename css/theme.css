@@ -257,18 +257,39 @@ textarea:focus {
 #topbar {
     position: fixed;
     text-align: center;
+    display: flex;
+    justify-content: space-evenly;
     top: 0;
-    padding: 10px;
+    padding: 8px;
     max-width: 412px;
     width: 100vw;
     z-index: 99;
+    max-height: 40px;
     background: var(--gray-0);
     box-sizing: border-box;
     box-shadow: 0 0 10px #0002;
+    overflow: hidden;
+    border-bottom-left-radius: var(--button-border-radius);
+    border-bottom-right-radius: var(--button-border-radius);
+}
+
+#logo {
+    height: 1.2rem;
 }
 
 #topbar p {
+    font-size: 1.2rem;
+}
+
+#topbar p:first-of-type {
     margin: 0 !important;
+    font-weight: bold;
+    color: var(--primary-3);
+}
+
+#topbar p.sub {
+    opacity: 0.4;
+    font-weight: normal;
 }
 
 #calendar {

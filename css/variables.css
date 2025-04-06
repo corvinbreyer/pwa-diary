@@ -96,6 +96,6 @@ body.dark {
 /* ––––––––––––– */
 
 :root {
-    --base-fonts: sans-serif;
+    --base-fonts: 'Inter', 'Segoe UI', sans-serif;
     --button-border-radius: 16px;
 }
