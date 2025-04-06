@@ -96,5 +96,6 @@ body.dark {
 /* ––––––––––––– */
 
 :root {
+    --base-fonts: sans-serif;
     --button-border-radius: 16px;
 }

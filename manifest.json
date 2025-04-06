@@ -1,6 +1,6 @@
 {
-    "name": "My To-Do App",
-    "short_name": "To-Do",
+    "name": "MoodFlow – Mein Stimmungstagebuch",
+    "short_name": "MoodFlow",
     "icons": [
         {
             "src": "./icons/icon-192x192.png",
@@ -15,6 +15,6 @@
     ],
     "start_url": "/",
     "display": "standalone",
-    "background_color": "#000000",
-    "theme_color": "#0f172a"
+    "background_color": "#131317",
+    "theme_color": "#00bcd4"
 }
