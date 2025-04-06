@@ -1,12 +1,16 @@
-const CACHE_NAME = 'moodtracker-v3';
+const CACHE_NAME = 'moodflow-2025v1';
 const ASSETS_TO_CACHE = [
     './',
     './index.html',
+    './manifest.json',
 
     './css/variables.css',
     './css/custom.css',
     './css/theme.css',
-
+    
+    './icons/icon-192x192.png',
+    './icons/icon-512x512.png',
+    
     './js/calendar.js',
     './js/customization.js',
     './js/database.js',
@@ -14,10 +18,11 @@ const ASSETS_TO_CACHE = [
     './js/mainChart.js',
     './js/navigation.js',
 
-    './icons/icon-192x192.png',
-    './icons/icon-512x512.png',
-
-    './manifest.json'
+    './svg/instagram.svg',
+    './svg/linkedin.svg',
+    './svg/logo.svg',
+    './svg/reddit.svg',
+    './svg/youtube.svg'
 ];
 
 // Install event - cache app shell
