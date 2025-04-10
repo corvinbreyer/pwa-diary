@@ -16,7 +16,9 @@ body {
     padding: 45px 0 90px;
     min-height: 100vh;
     width: 100vw;
-    max-width: 412px;
+    /*max-width: 412px;*/
+    max-width: 50vw;
+    min-width: 412px;
     position: relative;
     box-sizing: border-box;
     padding-bottom: 80px;
@@ -260,17 +262,16 @@ textarea:focus {
     display: flex;
     justify-content: space-evenly;
     top: 0;
+    left: 0;
     padding: 8px;
-    max-width: 412px;
     width: 100vw;
+    box-sizing: border-box;
     z-index: 99;
     max-height: 40px;
     background: var(--gray-0);
     box-sizing: border-box;
     box-shadow: 0 0 10px #0002;
     overflow: hidden;
-    border-bottom-left-radius: var(--button-border-radius);
-    border-bottom-right-radius: var(--button-border-radius);
 }
 
 #logo {
@@ -305,8 +306,8 @@ textarea:focus {
     z-index: 999;
     position: fixed;
     bottom: 0;
-    max-width: 412px;
-    width: 100vw;
+    width: 50%;
+    min-width: 412px;
     box-sizing: border-box;
     border-top-left-radius: var(--button-border-radius);
     border-top-right-radius: var(--button-border-radius);
@@ -326,13 +327,13 @@ textarea:focus {
     border-bottom-left-radius: 0;
 }
 
-#tabs a:nth-of-type(2) {
+/*#tabs a:nth-of-type(2) {
     border-top-left-radius: 0;
 }
 
 #tabs a:nth-of-type(3) {
     border-top-right-radius: 0;
-}
+}*/
 
 #tabs a:nth-of-type(4) {
     border-bottom-right-radius: 0;
